@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2027년 서울시 사회복지관 평가지표 사전준비 체크리스트 & 실무 가이드 시스템</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Marked.js (Markdown Renderer) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#0f172a',
+            },
+            esg: {
+              light: '#ecfdf5',
+              border: '#a7f3d0',
+              text: '#065f46',
+              badge: '#059669',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap');
+    * { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; }
+    
+    @media print {
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      body { background: white; color: black; font-size: 10pt; }
+      .page-break { page-break-after: always; }
+      .card-box { border: 1px solid #cbd5e1 !important; box-shadow: none !important; break-inside: avoid; margin-bottom: 1rem; }
+    }
+    .print-only { display: none; }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    
+    .badge-esg { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+    .badge-new { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
+    
+    /* Markdown Guide Prose Styling */
+    .prose-guide h1 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-top: 1.5rem; margin-bottom: 0.75rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+    .prose-guide h2 { font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-top: 1.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .prose-guide h3 { font-size: 1.05rem; font-weight: 600; color: #334155; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .prose-guide p { font-size: 0.875rem; line-height: 1.6; color: #475569; margin-bottom: 0.75rem; }
+    .prose-guide ul, .prose-guide ol { font-size: 0.875rem; line-height: 1.6; color: #475569; margin-bottom: 0.75rem; padding-left: 1.25rem; }
+    .prose-guide ul { list-style-type: disc; }
+    .prose-guide ol { list-style-type: decimal; }
+    .prose-guide li { margin-bottom: 0.25rem; }
+    .prose-guide blockquote { border-left: 4px solid #3b82f6; background-color: #eff6ff; padding: 0.75rem 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 1rem; color: #1e40af; font-size: 0.875rem; }
+    .prose-guide table { width: 100%; font-size: 0.8125rem; border-collapse: collapse; margin-bottom: 1.25rem; border-radius: 0.5rem; overflow: hidden; }
+    .prose-guide th { background-color: #f8fafc; color: #1e293b; font-weight: 600; padding: 0.625rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+    .prose-guide td { padding: 0.625rem 0.75rem; border: 1px solid #e2e8f0; color: #334155; }
+    .prose-guide tr:nth-child(even) { background-color: #fdfdfd; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+  <!-- Header -->
+  <header class="bg-slate-900 text-white shadow-xl sticky top-0 z-50 no-print border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-3.5">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-teal-400 flex items-center justify-center shadow-lg shadow-blue-500/30">
+            <i class="fa-solid fa-clipboard-check text-xl text-white"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-white">
+                2027년 서울시 사회복지관 평가지표 사전준비 시스템
+              </h1>
+              <span class="hidden sm:inline-flex text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30">
+                2024~2026 실적
+              </span>
+            </div>
+            <p class="text-xs text-slate-400 flex items-center gap-2 mt-0.5">
+              <span>총 20개 지표 (ESG 9개 포함)</span>
+              <span class="inline-block w-1 h-1 rounded-full bg-slate-600"></span>
+              <span class="text-emerald-400 font-medium">자체진단 & 가이드북 통합</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center space-x-2">
+          <button onclick="exportData()" title="데이터 JSON 백업" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-download text-blue-400"></i> <span class="hidden md:inline">백업저장</span>
+          </button>
+          <label class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 flex items-center gap-1.5 cursor-pointer transition">
+            <i class="fa-solid fa-upload text-teal-400"></i> <span class="hidden md:inline">불러오기</span>
+            <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)">
+          </label>
+          <button onclick="window.print()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-lg shadow-md shadow-indigo-600/30 flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-print"></i> <span>진단서 인쇄</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Bar -->
+      <nav class="flex space-x-1 overflow-x-auto py-1.5 scrollbar-none">
+        <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="tab-btn px-3.5 py-1.5 text-xs sm:text-sm font-bold rounded-lg text-blue-400 bg-slate-800 flex items-center gap-2 whitespace-nowrap transition">
+          <i class="fa-solid fa-chart-pie"></i> 종합 대시보드
+        </button>
+        <button onclick="switchTab('guide')" id="tab-btn-guide" class="tab-btn px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 flex items-center gap-2 whitespace-nowrap transition">
+          <i class="fa-solid fa-book-open-reader text-amber-400"></i> 핵심 실무 가이드 (MD)
+        </button>
+        <button onclick="switchTab('domain1')" id="tab-btn-domain1" class="tab-btn px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 flex items-center gap-2 whitespace-nowrap transition">
+          <i class="fa-solid fa-building-shield"></i> Ⅰ. 관리지표 (1~7)
+          <span id="badge-d1" class="text-[10px] px-1.5 py-0.2 bg-slate-700 rounded-full text-slate-300">0/7</span>
+        </button>
+        <button onclick="switchTab('domain2')" id="tab-btn-domain2" class="tab-btn px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 flex items-center gap-2 whitespace-nowrap transition">
+          <i class="fa-solid fa-users-gear"></i> Ⅱ. 조직역량 (8~15)
+          <span id="badge-d2" class="text-[10px] px-1.5 py-0.2 bg-slate-700 rounded-full text-slate-300">0/8</span>
+        </button>
+        <button onclick="switchTab('domain3')" id="tab-btn-domain3" class="tab-btn px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 flex items-center gap-2 whitespace-nowrap transition">
+          <i class="fa-solid fa-handshake-angle"></i> Ⅲ. 사업역량 (16~20)
+          <span id="badge-d3" class="text-[10px] px-1.5 py-0.2 bg-slate-700 rounded-full text-slate-300">0/5</span>
+        </button>
+        <button onclick="switchTab('calculator')" id="tab-btn-calculator" class="tab-btn px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 flex items-center gap-2 whitespace-nowrap transition">
+          <i class="fa-solid fa-calculator text-blue-400"></i> 정량 계산기
+        </button>
+        <button onclick="switchTab('docs')" id="tab-btn-docs" class="tab-btn px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 flex items-center gap-2 whitespace-nowrap transition">
+          <i class="fa-solid fa-folder-open text-teal-400"></i> 증빙서류 총괄표
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+    <!-- ================= TAB 1: Dashboard ================= -->
+    <section id="tab-dashboard" class="tab-content space-y-6">
+      <!-- Top Hero Banner -->
+      <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden border border-slate-800">
+        <div class="absolute right-0 bottom-0 translate-x-10 translate-y-10 opacity-10 text-white text-9xl pointer-events-none">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              2027년 서울형 사회복지시설 4기 평가 대비
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white">
+              우리 기관 평가지표 사전 점검 & 달성 대시보드
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              2024. 1. 1.부터 2026. 12. 31.까지 3개년 실적을 사전 진단하고, 2026년 신규 적용 기준(자체 안전매뉴얼, 외부위원 면접, 1인 20만원 교육비, 정기 슈퍼비전 등)을 완벽히 준비할 수 있습니다.
+            </p>
+          </div>
+
+          <!-- Institution Setting Card -->
+          <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-inner flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <div>
+              <label class="block text-[11px] text-blue-200 font-bold mb-1">우리 복지관 기관명</label>
+              <input type="text" id="instName" placeholder="예: 서울종합사회복지관" oninput="saveInstInfo()" class="bg-white text-slate-800 text-xs sm:text-sm font-bold rounded-xl px-3 py-2 w-48 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+              <label class="block text-[11px] text-blue-200 font-bold mb-1">자체점검 담당자</label>
+              <input type="text" id="inspectorName" placeholder="홍길동 부장" oninput="saveInstInfo()" class="bg-white text-slate-800 text-xs sm:text-sm font-bold rounded-xl px-3 py-2 w-32 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Status Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- 1. Total Compliance Rate -->
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-between relative overflow-hidden group hover:border-emerald-300 transition">
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400">종합 충실 달성률</span>
+            <h3 class="text-3xl font-black text-slate-800 tracking-tight" id="dash-compliance-rate">0%</h3>
+            <p class="text-xs text-slate-500">총 20개 중 <span id="dash-loyal-count" class="font-extrabold text-emerald-600">0</span>개 충실</p>
+          </div>
+          <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+        </div>
+
+        <!-- 2. Normal Grade Count -->
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-between group hover:border-amber-300 transition">
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400">보통 등급 (상향 대상)</span>
+            <h3 class="text-3xl font-black text-amber-600 tracking-tight" id="dash-normal-count">0개</h3>
+            <p class="text-xs text-amber-700 font-medium">조금만 보완하면 충실 전환</p>
+          </div>
+          <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+        </div>
+
+        <!-- 3. Deficient Grade Count -->
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-between group hover:border-rose-300 transition">
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400">보완 등급 (집중 관리)</span>
+            <h3 class="text-3xl font-black text-rose-600 tracking-tight" id="dash-deficient-count">0개</h3>
+            <p class="text-xs text-rose-600 font-bold">2026년 내 체계 구축 필수</p>
+          </div>
+          <div class="w-14 h-14 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </div>
+        </div>
+
+        <!-- 4. ESG Indicator Status -->
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-between group hover:border-teal-300 transition">
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400">ESG 연계 지표 (9개)</span>
+            <h3 class="text-3xl font-black text-teal-600 tracking-tight" id="dash-esg-rate">0/9</h3>
+            <p class="text-xs text-teal-700 font-semibold">ESG 충실률 <span id="dash-esg-pct">0%</span></p>
+          </div>
+          <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts & 2026 Focus Action Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Chart: Domain Progress -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col items-center justify-between">
+          <div class="w-full flex items-center justify-between mb-2">
+            <h3 class="text-sm font-extrabold text-slate-800 flex items-center gap-2">
+              <i class="fa-solid fa-chart-pie text-blue-600"></i> 3개 영역별 충실 달성도
+            </h3>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">실시간 반영</span>
+          </div>
+
+          <div class="w-full h-48 flex items-center justify-center relative my-2">
+            <canvas id="domainChart"></canvas>
+          </div>
+
+          <div class="w-full grid grid-cols-3 gap-2 mt-2 text-center text-xs">
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <span class="block text-slate-400 text-[11px]">Ⅰ. 관리지표</span>
+              <strong id="dom-stat-1" class="text-slate-800 font-extrabold">0/7</strong>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <span class="block text-slate-400 text-[11px]">Ⅱ. 조직역량</span>
+              <strong id="dom-stat-2" class="text-slate-800 font-extrabold">0/8</strong>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <span class="block text-slate-400 text-[11px]">Ⅲ. 사업역량</span>
+              <strong id="dom-stat-3" class="text-slate-800 font-extrabold">0/5</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2026 Golden Time Focus Checklist -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 lg:col-span-2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-sm font-extrabold text-slate-800 flex items-center gap-2">
+                <i class="fa-solid fa-fire text-rose-500 animate-bounce"></i> 2026년 골든타임: 신규/강화 필수 체크포인트
+              </h3>
+              <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-700">
+                2026년 실적 필수
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 mb-4">
+              2026년도에 미이행 시 평가 시점에 소급 적용이 불가능하여 즉시 보완 판정을 받게 되는 지표들입니다.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div class="p-3 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded-md bg-amber-200 text-amber-900 font-extrabold text-[10px]">지표 1 안전관리</span>
+                  <i class="fa-solid fa-shield-halved text-amber-600"></i>
+                </div>
+                <strong class="text-slate-800 block text-xs">자체 매뉴얼 & 반기 1회 모의훈련</strong>
+                <p class="text-slate-600 text-[11px]">외부 배포 매뉴얼 단순 비치 미인정, 2026년 상/하반기 각 1회 자체 훈련 사진 필수</p>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded-md bg-blue-200 text-blue-900 font-extrabold text-[10px]">지표 3 채용 공정성</span>
+                  <i class="fa-solid fa-user-check text-blue-600"></i>
+                </div>
+                <strong class="text-slate-800 block text-xs">외부위원 면접 & 범죄경력 사전조회</strong>
+                <p class="text-slate-600 text-[11px]">법인발령/전환자도 외부위원 필수, 범죄경력회보서는 반드시 임용일 전에 완료</p>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded-md bg-indigo-200 text-indigo-900 font-extrabold text-[10px]">지표 10 교육체계</span>
+                  <i class="fa-solid fa-graduation-cap text-indigo-600"></i>
+                </div>
+                <strong class="text-slate-800 block text-xs">1인당 연평균 교육활동비 20만원</strong>
+                <p class="text-slate-600 text-[11px]">기본인력 19명 기준 연 380만원 실집행(정량평가), 단순 연수비/학비 제외</p>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded-md bg-emerald-200 text-emerald-900 font-extrabold text-[10px]">지표 16·17 사례관리</span>
+                  <i class="fa-solid fa-hand-holding-heart text-emerald-600"></i>
+                </div>
+                <strong class="text-slate-800 block text-xs">자체매뉴얼 & 정기 슈퍼비전</strong>
+                <p class="text-slate-600 text-[11px]">2026년 자체매뉴얼 수립, 내부 월1회+외부 연2회 슈퍼비전 실적 충족 필수</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400">지표별 탭에서 세부 항목을 체크하여 자가진단을 완성하세요.</span>
+            <div class="flex items-center gap-2">
+              <button onclick="switchTab('guide')" class="text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 px-3 py-1.5 rounded-xl transition">
+                가이드 읽기
+              </button>
+              <button onclick="switchTab('domain1')" class="text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 px-3.5 py-1.5 rounded-xl shadow transition flex items-center gap-1">
+                진단 시작 <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Summary Table of All 20 Indicators -->
+      <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="text-base font-extrabold text-slate-800 flex items-center gap-2">
+              <i class="fa-solid fa-list-check text-indigo-600"></i> 평가지표 20개 전체 현황 요약
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">클릭하면 해당 지표 세부 체크 화면으로 즉시 이동합니다.</p>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button onclick="filterSummaryTable('all')" class="sum-filter-btn px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-800 text-white transition" data-filter="all">전체보기</button>
+            <button onclick="filterSummaryTable('보완')" class="sum-filter-btn px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition" data-filter="보완">보완 대상만</button>
+            <button onclick="filterSummaryTable('ESG')" class="sum-filter-btn px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition" data-filter="ESG">ESG 지표</button>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-600">
+            <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-4 w-14 text-center">번호</th>
+                <th class="py-3 px-4 w-28">영역</th>
+                <th class="py-3 px-4">지표명 및 주요 내용</th>
+                <th class="py-3 px-4 w-20 text-center">ESG</th>
+                <th class="py-3 px-4 w-24 text-center">평가방식</th>
+                <th class="py-3 px-4 w-28 text-center">현재 판정</th>
+                <th class="py-3 px-4 w-20 text-center">이동</th>
+              </tr>
+            </thead>
+            <tbody id="summary-table-body" class="divide-y divide-slate-100">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: MD Guide (실무 가이드 뷰어) ================= -->
+    <section id="tab-guide" class="tab-content hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center text-sm shadow">
+              <i class="fa-solid fa-book-open"></i>
+            </span>
+            2027년 서울시 평가지표 사전준비 핵심 실무 가이드 (MD)
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">평가지표 설명회 자료집을 바탕으로 재구성된 기관 실무자용 핵심 가이드라인</p>
+        </div>
+        <button onclick="window.print()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-file-pdf"></i> 가이드 인쇄
+        </button>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 sm:p-8 prose-guide">
+        <div id="guide-markdown-content">
+          <!-- Loaded dynamically from embedded markdown -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: Domain 1 (관리지표 1~7) ================= -->
+    <section id="tab-domain1" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center text-sm shadow">Ⅰ</span>
+            관리지표 (1번 ~ 7번)
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">시설 및 환경관리, 인적자원관리, 재정 지표</p>
+        </div>
+        <div class="text-xs font-bold px-3.5 py-2 rounded-xl bg-blue-50 text-blue-700 border border-blue-200" id="status-badge-d1">
+          충실 0 / 보통 0 / 보완 7
+        </div>
+      </div>
+
+      <div id="indicators-domain1" class="space-y-6">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: Domain 2 (조직역량지표 8~15) ================= -->
+    <section id="tab-domain2" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-sm shadow">Ⅱ</span>
+            조직역량지표 (8번 ~ 15번)
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">지역사회 환경 변화 대응, 인력 전문성, 직원 인권 및 이용자 인권보장</p>
+        </div>
+        <div class="text-xs font-bold px-3.5 py-2 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200" id="status-badge-d2">
+          충실 0 / 보통 0 / 보완 8
+        </div>
+      </div>
+
+      <div id="indicators-domain2" class="space-y-6">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: Domain 3 (사업역량지표 16~20) ================= -->
+    <section id="tab-domain3" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-purple-600 text-white flex items-center justify-center text-sm shadow">Ⅲ</span>
+            사업역량지표 (16번 ~ 20번)
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">심층 사례관리(5개 case), 대표사업 평가(2개), 신규 서울시 정책사업 평가(1개)</p>
+        </div>
+        <div class="text-xs font-bold px-3.5 py-2 rounded-xl bg-purple-50 text-purple-700 border border-purple-200" id="status-badge-d3">
+          충실 0 / 보통 0 / 보완 5
+        </div>
+      </div>
+
+      <div id="indicators-domain3" class="space-y-6">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ================= TAB 5: Calculator (정량지표 자동계산기) ================= -->
+    <section id="tab-calculator" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
+          <i class="fa-solid fa-calculator text-blue-600"></i> 정량지표 시뮬레이션 계산기
+        </h2>
+        <p class="text-xs text-slate-500 mt-0.5">2024~2026년 3개년 데이터를 입력하여 지표별 달성률과 등급을 즉시 산출합니다.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Calc 1: 지표 4 직원 근속률 -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div>
+              <span class="text-xs font-extrabold text-blue-600">지표 4</span>
+              <h3 class="text-base font-bold text-slate-800">직원 근속률 계산기</h3>
+            </div>
+            <span class="px-3 py-1 text-xs font-extrabold rounded-xl" id="calc4-badge">보완 (0%)</span>
+          </div>
+
+          <div class="text-xs text-slate-600 bg-slate-50 p-3.5 rounded-2xl space-y-1 border border-slate-100">
+            <p><strong>산정식:</strong> (3개년 매년 12.31 기준 30개월 이상 근속 직원 수 평균 ÷ 19명) × 100</p>
+            <p><strong>충실 기준:</strong> <strong>60% 이상</strong> (연평균 11.4명 이상 30개월 근속 유지 시)</p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">2024.12.31 근속자</label>
+              <input type="number" id="calc4-y24" value="12" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+              <span class="text-[10px] text-slate-400">30개월 이상자</span>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">2025.12.31 근속자</label>
+              <input type="number" id="calc4-y25" value="12" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+              <span class="text-[10px] text-slate-400">30개월 이상자</span>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">2026.12.31 근속자</label>
+              <input type="number" id="calc4-y26" value="12" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+              <span class="text-[10px] text-slate-400">30개월 이상자</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-blue-50/60 rounded-2xl border border-blue-100 flex items-center justify-between text-xs">
+            <span>3개년 평균 근속자 수: <strong id="calc4-avg" class="text-blue-700 font-bold">12.0명</strong> / 19명</span>
+            <span>근속률: <strong id="calc4-result" class="text-blue-700 font-extrabold text-sm">63.16%</strong></span>
+          </div>
+        </div>
+
+        <!-- Calc 2: 지표 6 사업비 비율 -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div>
+              <span class="text-xs font-extrabold text-blue-600">지표 6</span>
+              <h3 class="text-base font-bold text-slate-800">사업비 비율 계산기</h3>
+            </div>
+            <span class="px-3 py-1 text-xs font-extrabold rounded-xl" id="calc6-badge">보완 (0%)</span>
+          </div>
+
+          <div class="text-xs text-slate-600 bg-slate-50 p-3.5 rounded-2xl space-y-1 border border-slate-100">
+            <p><strong>산정식:</strong> (3개년 사업비[관03] 총액 ÷ 시설 총 지출액) × 100</p>
+            <p class="text-rose-600 font-semibold">※ 분모 제외: 관02(재산조성비), 관07(예비비 및 기타), 차기이월금</p>
+            <p><strong>충실 기준:</strong> <strong>35% 이상</strong> (절대평가)</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">3개년 사업비(관03) 총액 (원)</label>
+              <input type="number" id="calc6-num" value="1200000000" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">총 지출액(제외항목 차감) (원)</label>
+              <input type="number" id="calc6-den" value="3000000000" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-blue-50/60 rounded-2xl border border-blue-100 flex items-center justify-between text-xs">
+            <span>사업비 비중 산정:</span>
+            <span>비율: <strong id="calc6-result" class="text-blue-700 font-extrabold text-sm">40.00%</strong></span>
+          </div>
+        </div>
+
+        <!-- Calc 3: 지표 7 외부자원금 개발 비율 -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div>
+              <span class="text-xs font-extrabold text-blue-600">지표 7</span>
+              <h3 class="text-base font-bold text-slate-800">외부자원금 개발 비율 계산기</h3>
+            </div>
+            <span class="px-3 py-1 text-xs font-extrabold rounded-xl" id="calc7-badge">보완 (0%)</span>
+          </div>
+
+          <div class="text-xs text-slate-600 bg-slate-50 p-3.5 rounded-2xl space-y-1 border border-slate-100">
+            <p><strong>산정식:</strong> (3개년 외부자원금 총액 ÷ 시설 총 예산액) × 100</p>
+            <p class="text-rose-600 font-semibold">※ 분자 제외: 경상보조금, 기능보강비, 법인전입금(후원금), 이월금, 현물</p>
+            <p><strong>충실 기준:</strong> <strong>35% 이상</strong> (절대평가)</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">외부자원금(후원+민간+정부) (원)</label>
+              <input type="number" id="calc7-num" value="1100000000" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">시설 총 예산액(제외항목 차감) (원)</label>
+              <input type="number" id="calc7-den" value="3000000000" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-blue-50/60 rounded-2xl border border-blue-100 flex items-center justify-between text-xs">
+            <span>외부자원금 비율:</span>
+            <span>비율: <strong id="calc7-result" class="text-blue-700 font-extrabold text-sm">36.67%</strong></span>
+          </div>
+        </div>
+
+        <!-- Calc 4: 지표 10-② 직원 1인당 교육 활동비 -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div>
+              <span class="text-xs font-extrabold text-blue-600">지표 10-②</span>
+              <h3 class="text-base font-bold text-slate-800">1인당 연평균 교육 활동비</h3>
+            </div>
+            <span class="px-3 py-1 text-xs font-extrabold rounded-xl" id="calc10-badge">보완</span>
+          </div>
+
+          <div class="text-xs text-slate-600 bg-slate-50 p-3.5 rounded-2xl space-y-1 border border-slate-100">
+            <p><strong>산정식:</strong> 3개년 연평균 교육활동비 총액 ÷ 19명</p>
+            <p class="text-slate-500">※ 1인 1회 최대 50만원 한도, 단순 기관방문/학비/총회비 제외, 집단교육은 1/N</p>
+            <p><strong>충실 기준:</strong> 직원 1인당 연평균 <strong>200,000원 이상</strong> (연 380만원 이상 집행)</p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">2024년 총 교육비(원)</label>
+              <input type="number" id="calc10-y24" value="4500000" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">2025년 총 교육비(원)</label>
+              <input type="number" id="calc10-y25" value="4500000" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">2026년 총 교육비(원)</label>
+              <input type="number" id="calc10-y26" value="4500000" oninput="runCalculator()" class="w-full text-sm font-bold p-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-400">
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-blue-50/60 rounded-2xl border border-blue-100 flex items-center justify-between text-xs">
+            <span>연평균 집행액: <strong id="calc10-avg" class="text-blue-700 font-bold">4,500,000원</strong></span>
+            <span>1인당 연평균: <strong id="calc10-result" class="text-blue-700 font-extrabold text-sm">236,842원</strong></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 6: Required Documents Summary ================= -->
+    <section id="tab-docs" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
+            <i class="fa-solid fa-folder-open text-teal-600"></i> 평가지표별 필수 증빙서류 바인더 준비 총괄표
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">평가 당일 현장 확인 및 사전 제출을 위해 바인더별로 구비해야 할 필수 서류</p>
+        </div>
+        <button onclick="exportDocListToCSV()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-600/30 flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-file-excel"></i> 서류목록 엑셀(CSV) 다운로드
+        </button>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-600">
+            <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-4 w-16 text-center">번호</th>
+                <th class="py-3 px-4 w-44">지표명</th>
+                <th class="py-3 px-4">필수 준비 서류 및 근거자료</th>
+                <th class="py-3 px-4 w-48">확인 대상 기간 및 주의사항</th>
+                <th class="py-3 px-4 w-28 text-center">준비 상태</th>
+              </tr>
+            </thead>
+            <tbody id="docs-table-body" class="divide-y divide-slate-100">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 no-print">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-bold text-slate-700">2027년 서울시 사회복지관 평가지표 사전준비 체크리스트 시스템</p>
+      <p class="text-[11px] text-slate-400 mt-1">출처: 서울시복지재단 2027년 서울시 사회복지관 평가지표 설명회 자료집 (2025.11)</p>
+    </div>
+  </footer>
+
+  <!-- Print View Container -->
+  <div class="print-only p-6 max-w-4xl mx-auto">
+    <div class="border-b-2 border-slate-800 pb-4 mb-6 text-center">
+      <h1 class="text-2xl font-bold">2027년 서울시 사회복지관 평가지표 자체진단 종합 보고서</h1>
+      <p class="text-xs text-slate-500 mt-1">평가대상 기간: 2024. 1. 1. ~ 2026. 12. 31. (3개년)</p>
+      <div class="flex justify-between text-xs font-semibold mt-4 px-2">
+        <span>기관명: <strong id="print-inst-name">-</strong></span>
+        <span>점검자: <strong id="print-inspector-name">-</strong></span>
+        <span>출력일시: <strong id="print-date">-</strong></span>
+      </div>
+    </div>
+
+    <!-- Print KPI summary -->
+    <div class="grid grid-cols-4 gap-4 mb-6 border p-4 rounded-lg text-center text-xs">
+      <div>
+        <span class="block text-slate-500">충실 달성률</span>
+        <strong class="text-base text-emerald-600" id="print-rate">0%</strong>
+      </div>
+      <div>
+        <span class="block text-slate-500">충실 지표</span>
+        <strong class="text-base text-slate-800" id="print-loyal">0개</strong>
+      </div>
+      <div>
+        <span class="block text-slate-500">보통 지표</span>
+        <strong class="text-base text-amber-600" id="print-normal">0개</strong>
+      </div>
+      <div>
+        <span class="block text-slate-500">보완 지표</span>
+        <strong class="text-base text-rose-600" id="print-deficient">0개</strong>
+      </div>
+    </div>
+
+    <!-- Print detail table -->
+    <table class="w-full text-left text-xs border border-collapse mb-6">
+      <thead>
+        <tr class="bg-slate-100 border-b">
+          <th class="p-2 border text-center w-12">번호</th>
+          <th class="p-2 border">지표명</th>
+          <th class="p-2 border text-center w-16">ESG</th>
+          <th class="p-2 border text-center w-20">평가결과</th>
+          <th class="p-2 border">세부 점검 현황 및 메모</th>
+        </tr>
+      </thead>
+      <tbody id="print-table-body">
+        <!-- populated -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Embedded Markdown Raw Content & Script -->
+  <script>
+    const GUIDE_MD_CONTENT = `# 2027년 서울시 사회복지관 평가지표 사전준비 핵심 가이드 & 실무 매뉴얼
+
+> **평가 대상기간**: 2024년 1월 1일 ~ 2026년 12월 31일 (3개년 실적)  
+> **평가 시행**: 2027년 (서울시 사회복지관 99개소 대상)  
+> **근거 자료**: 서울시복지재단 2027년 서울시 사회복지관 평가지표 설명회 자료집 (2025.11)
+
+---
+
+## 1. 2027년 평가지표 주요 개정 방향 및 특징
+
+1. **지표 수 조정 및 통합 (24개 → 20개)**
+   - 회계의 투명성 지표 삭제
+   - '지역사회 환경변화 대응'과 '네트워크 협력' 통합 (지표 8)
+   - '서비스 절차 명문화'와 '이용자 고충처리' 통합 (지표 15)
+   - **서울시 정책사업 평가 지표 신설 (지표 20)**
+2. **ESG 경영 지표 본격 반영 (총 9개 지표)**
+   - 지표 1(안전), 지표 2(환경), 지표 3(채용 공정성), 지표 5(직원복지), 지표 8(지역협력), 지표 11(시설장 전문성), 지표 13(직원 인권), 지표 14(이용자 인권), 지표 15(서비스 절차 및 고충처리)
+3. **정량지표 절대평가 기준 전환**
+   - 사업비 비율(35% 이상 충실), 외부자원금 개발 비율(35% 이상 충실), 직원 근속률(60% 이상 충실), 직원 1인당 연평균 교육활동비(20만원 이상 충실)
+
+---
+
+## 2. 2026년 신규 적용/강화 기준 (집중 관리 포인트)
+
+| 지표 번호 및 지표명 | 2026년 신규/강화 적용 기준 | 미비 시 위험도 |
+| :--- | :--- | :---: |
+| **1. 안전관리** | • 외부 SOP 단순 비치 미인정, **시설 자체 안전매뉴얼 및 연간 안전계획 수립** 필수<br>• **반기별 1회 이상(2026년 상/하반기 각 1회) 자체 모의훈련** 실시 필수 | **높음** |
+| **3. 직원 채용의 공정성** | • **법인 인사발령자 및 계약직→정규직 전환자도 외부위원 면접 참여 및 공채 근거** 필수<br>• 범죄경력조회 회신서는 **임용일 이전 구비** 필수, 경력증명서는 임용 후 3개월 이내 | **매우 높음** |
+| **5. 직원복지** | • 신규직원 **입사일로부터 7일 이내 상해보험(공제) 가입** 필수 (공백 미인정)<br>• 독립적인 전용 직원 휴게공간 확보 (사무실/프로그램실 겸용 불가) | **중간** |
+| **10. 직원교육체계** | • 직원 1인당 연평균 교육활동비 **200,000원 이상 실집행** (19명 기준 연 380만원↑) | **높음** |
+| **13. 직원의 인권** | • 정례 직원 간담회/면담 **연 2회 이상** 실시 (2026년)<br>• 법정의무교육 외 **별도 '직원 인권보장 교육' 연 1회** 추가 실시 | **높음** |
+| **14. 이용자 인권보장** | • 직원의 인권교육과 별도로 **'직원 대상 이용자 인권교육' 연 1회** 별도 실시 | **높음** |
+| **16. 사례관리 실행체계** | • **시설 자체 사례관리 매뉴얼(2026년)** 마련 필수<br>• 총 5개 Case 제출 (진행 3건 + 종결 2건, 3개월 이상 개입) | **매우 높음** |
+| **17. 사례관리 지원체계** | • 정기 슈퍼비전 기준: **내부 월 1회 이상 + 외부 연 2회 이상** 실시 필수 (시설 전체) | **매우 높음** |
+
+---
+
+## 3. 영역별 세부 평가지표 (20개) 총괄 요약
+
+### Ⅰ. 관리지표 (1번 ~ 7번)
+1. **[ESG] 안전관리**: 자체 안전매뉴얼, 연1회 예방교육, 반기별 1회 모의훈련
+2. **[ESG] 시설환경관리**: 환경개선 실적, 편의시설 설치, 독립 휴식공간, 환경보호 실천노력 3건 이상
+3. **[ESG] 직원 채용의 공정성**: 공채규정, 차별금지, 외부위원 면접, 3개년 100% 공채, 임용서류 임용전 구비
+4. **직원 근속률**: 30개월 이상 근속 직원 수 평균 / 19명 기준 (60% 이상 충실)
+5. **[ESG] 직원복지**: 상해보험(7일내), 경조사휴가, 서울시 처우개선계획(3개이상), 유연근무제, 독립 휴게공간
+6. **사업비 비율**: 세출결산서 관03 사업비 합계 / 총지출액 (35% 이상 충실)
+7. **외부자원금 개발 비율**: 세입결산서 외부자원금(후원+민간+정부) / 시설 총예산액 (35% 이상 충실)
+
+### Ⅱ. 조직역량지표 (8번 ~ 15번)
+8. **[ESG] 지역사회 환경 변화 대응 및 네트워크 협력**: 환경특성 분석/공유, 5년내 중장기계획 및 사업 반영, 공적 네트워크 구축 및 실질 협업
+9. **주민의 참여**: 주민참여 기반 마련(주민기획단/간담회), 주민 주도 의견의 기관/사업 반영 변화 실적
+10. **직원교육체계**: 계획-실행-결과-환류 교육체계, 1인당 연 20만원 이상 교육비, 교육의 직무역량 도움 인터뷰
+11. **[ESG] 시설장의 자격 및 전문성**: 사회복지사 1급(2024.1.1 기준), 사회복지시설 경력 15년 이상, 환경변화 대응 조직관리 인터뷰
+12. **중간관리자의 자격 및 전문성**: 사회복지사 1급, 사회복지시설 경력 15년 이상, 사업체계/슈퍼비전/협력 인터뷰
+13. **[ESG] 직원의 인권**: 인권/고충 규정 명문화, 고충기구 설치, 적극 대응(연2회 간담회), 10일내 처리, 법정교육 외 직원인권교육 연1회
+14. **[ESG] 이용자 인권보장**: 인권규정, 정보 게시/제공, 이용자 대상 인권교육 연1회, 직원 대상 이용자인권교육 연1회, 인권침해 진정 접수조치
+15. **[ESG] 서비스 절차 명문화 및 고충처리**: 서비스/고충 절차 규정 및 안내, 동의서/계약서 기반 서비스, 고충창구 운영 및 연1회 고충파악 회의
+
+### Ⅲ. 사업역량지표 (16번 ~ 20번)
+16. **사례관리의 실행체계**: 자체 매뉴얼(2026), 사정-계획-점검-종결/사후관리 체계적 실행, 전 과정 이용자 역할 참여 (총 5개 Case)
+17. **사례관리의 지원체계**: 사례발굴 노력, 정기 슈퍼비전(내부 월1회, 외부 연2회), 통합사례회의 등 민관 협력체계
+18~19. **사업 평가 (대표 2개 사업)**: 기획 전문성(욕구/환경 반영), 수행과정 적절성(기록/자원동원), 결과평가(과정/성과/참여자), 환류(계획피드백/홍보공유)
+20. **[신규] 서울시 정책사업 평가 (1개 사업)**: 정책사업 이해 및 기획 적절성, 체계적 수행 및 예산 집행, 결과평가, 환류`;
+
+    // 2027 Seoul Social Welfare Center Evaluation Data Definitions
+    const INDICATOR_DATA = [
+      // Domain 1: 관리지표
+      {
+        id: 1,
+        domainId: 1,
+        domain: "Ⅰ. 관리지표",
+        subDomain: "1-1. 시설 및 환경관리",
+        title: "1. 안전관리",
+        isEsg: true,
+        type: "qualitative",
+        purpose: "이용자와 직원의 안전한 시설 이용을 위해 정기적인 교육과 모의훈련을 실시하는지 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "세부평가내용 3개 항목 모두 충족",
+          normal: "세부평가내용 2개 항목 충족",
+          deficient: "세부평가내용 1개 이하 항목 충족"
+        },
+        items: [
+          { id: "1-1", text: "① 직원과 이용자를 위한 시설 자체 안전사고 예방 관련 매뉴얼이 있다. (자체 안전관리계획서 매년 수립 포함, 복지부 외부배포 단순 비치는 미인정)", year2026: true },
+          { id: "1-2", text: "② 직원과 이용자를 대상으로 연 1회 이상 안전사고 관련 예방교육을 실시하고 있다. (화재, 지진, 식중독, 긴급전염병 등, 온·오프라인 참여근거 필요)" },
+          { id: "1-3", text: "③ 직원과 이용자를 대상으로 반기별 1회 이상 안전사고에 대비한 자체 모의훈련을 실시하고 있다. (2026년 상·하반기 각 1회씩 필수, 사진 포함 결과보고)", year2026: true }
+        ],
+        requiredDocs: "시설 자체 안전사고 예방(대처) 매뉴얼, 연간 안전관리계획서 및 결과보고, 비상연락망 및 응급조치반 편성표, 교육/훈련 결과보고서(사진 포함)",
+        keyNotes: "외부 SOP 매뉴얼 복사본은 불인정되며 복지관 특성에 맞게 보완된 자체 매뉴얼이어야 합니다. 2026년 모의훈련은 상/하반기 각 1회 실적이 반드시 확인되어야 합니다."
+      },
+      {
+        id: 2,
+        domainId: 1,
+        domain: "Ⅰ. 관리지표",
+        subDomain: "1-1. 시설 및 환경관리",
+        title: "2. 시설환경관리",
+        isEsg: true,
+        type: "qualitative",
+        purpose: "이용자가 시설을 이용하기에 편리한 시설 환경을 갖추고 있는지 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "세부평가내용 3개 이상 항목 충족 (실질 4개 중 3개 이상)",
+          normal: "세부평가내용 2개 항목 충족",
+          deficient: "세부평가내용 1개 이하 항목 충족"
+        },
+        items: [
+          { id: "2-1", text: "① 시설 및 환경 개선을 위해 시설에서 추진한 실적이 있다. (쾌적한 환경 유지·관리 계획 및 실행 실적)" },
+          { id: "2-2", text: "② 관련 법규와 규정에 맞게 편의시설을 갖추고 있다. (장애인·노인·임산부등의편의증진보장에관한법률 준수)" },
+          { id: "2-3", text: "③ 이용자가 휴식할 수 있는 공간을 갖추고 있다. (의자 등 갖춘 독립 휴식공간, 프로그램실/사무실 겸용 불가)" },
+          { id: "2-4", text: "④ 시설은 환경보호 실천을 위해 다양한 노력을 하고 있다. (탄소중립, 친환경인쇄, 일회용품줄이기, 에코마일리지 등 평가기간 내 3건 이상 실적)", year2026: false }
+        ],
+        requiredDocs: "시설 환경개선 공사/기능보강 계획서 및 결과보고서, 편의시설 점검표, 이용자 휴게공간 현장, 환경보호 실천 증빙자료(3건 이상 사진/결과보고서)",
+        keyNotes: "환경보호 실천 실적은 평가기간(3년) 동안 최소 3건 이상 증빙자료(보고서, 비치물, 사진 등)가 구비되어 있어야 충족됩니다."
+      },
+      {
+        id: 3,
+        domainId: 1,
+        domain: "Ⅰ. 관리지표",
+        subDomain: "1-2. 인적자원관리",
+        title: "3. 직원 채용의 공정성",
+        isEsg: true,
+        type: "qualitative",
+        purpose: "공정한 절차와 방법을 통해 인력을 채용하고 있는지 평가함 (기본인력 19명 기준)",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "세부평가내용 5개 항목 모두 충족",
+          normal: "세부평가내용 3~4개 항목 충족",
+          deficient: "세부평가내용 2개 이하 항목 충족"
+        },
+        items: [
+          { id: "3-1", text: "① 공개채용에 관한 규정이 마련되어 있으며, 해당 규정에 따라 직원을 채용하고 있다." },
+          { id: "3-2", text: "② 차별적인 내용(나이, 성별, 신체조건, 출신지역, 가족정보, 종교 등)을 채용조건에 명시하지 않고 입사지원서 양식에서도 배제하고 있다." },
+          { id: "3-3", text: "③ 직원 채용을 위한 면접 과정에 외부위원이 참여하고 있다. (법인채용자 발령 및 계약직→정규직 전환 시에도 2026년부터 외부위원 필수)", year2026: true },
+          { id: "3-4", text: "④ 3년간 공개채용 비율이 100%이다. (홈페이지 외 워크넷/복지넷 등 2곳 이상 15일 이상 공고, 긴급채용 시 7일~15일 사유명시)" },
+          { id: "3-5", text: "⑤ 직원 채용과 관련된 심사 기준, 채점표, 구비서류 등의 관련 문서를 보관하고 있다. (범죄경력조회는 임용 전 구비 필수-2026년)", year2026: true }
+        ],
+        requiredDocs: "채용규정, 채용계획/결과 내부결재문서, 채용공고 캡처본(2곳 이상, 날짜 확인), 응시원서, 면접 채점표 및 외부위원 평가서, 범죄경력회보서(임용 전 날짜 확인), 경력증명서(3개월 이내)",
+        keyNotes: "2026년부터 법인 발령자 및 계약직→정규직 전환자도 외부위원 면접 참여 및 공개채용 근거가 확인되어야 하며, 범죄경력조회는 반드시 임용일 전에 완료되어야 합니다."
+      },
+      {
+        id: 4,
+        domainId: 1,
+        domain: "Ⅰ. 관리지표",
+        subDomain: "1-2. 인적자원관리",
+        title: "4. 직원 근속률",
+        isEsg: false,
+        type: "quantitative",
+        purpose: "직원 근속률을 통해 시설이 이용자에게 지속적인 서비스를 제공할 수 있도록 직원의 안정적인 근무환경 관리를 위하여 노력하는지 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "직원 근속률 60% 이상",
+          normal: "직원 근속률 30% 이상 ~ 60% 미만",
+          deficient: "직원 근속률 30% 미만"
+        },
+        items: [
+          { id: "4-1", text: "① 매년 12월 31일 기준 입사일로부터 30개월 이상 근무한 근속 직원 수 평균 산정 (분모는 기본인력 19명 고정)" }
+        ],
+        requiredDocs: "시/자치구 보고 입·퇴사 보고 현황(희망이음), 3개년 12월 급여명세서/인사기록카드",
+        keyNotes: "분모는 19명 고정입니다. 법인 내 타 복지시설 간 인사 이동자는 법인 입사일부터 인정됩니다."
+      },
+      {
+        id: 5,
+        domainId: 1,
+        domain: "Ⅰ. 관리지표",
+        subDomain: "1-2. 인적자원관리",
+        title: "5. 직원복지",
+        isEsg: true,
+        type: "qualitative",
+        purpose: "직원복지제도를 통하여 직원이 안정된 직장생활을 할 수 있도록 지원하는지 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "세부평가내용 5개 항목 모두 충족",
+          normal: "세부평가내용 4개 항목 충족",
+          deficient: "세부평가내용 3개 이하 항목 충족"
+        },
+        items: [
+          { id: "5-1", text: "① 직원에 대한 상해보험(공제)에 가입하고 있다. (신규입사자 입사일로부터 7일 이내 가입 필수, 보험 공백 미인정)", year2026: true },
+          { id: "5-2", text: "② 직원 경조사 휴가를 시행하고 있다. (경조사 규정 마련 및 실적 증빙)" },
+          { id: "5-3", text: "③ 「서울시 사회복지시설 종사자 처우개선 및 운영계획」 내 복지항목 중 3개 이상을 실시하고 있다. (장기근속휴가, 유급병가, 가족돌봄, 건강검진, 복지포인트, 단체연수 등 10개 중 3개 이상)" },
+          { id: "5-4", text: "④ 유연근무제를 운영하고 있다. (규정 및 실제 운영 실적 자료)" },
+          { id: "5-5", text: "⑤ 직원을 위한 적정한 휴게공간이 독립적으로 마련되어 있다. (크기·온도·조명 적정, 사무실/프로그램실 겸용 불가)" }
+        ],
+        requiredDocs: "상해보험(공제) 증권 및 가입명단, 경조사휴가 규정 및 사용원부, 종사자 처우개선 신청서/결과보고, 유연근무 규정 및 신청/복무기록, 직원 휴게실 사진 및 현장 확인",
+        keyNotes: "2026년부터 신규 직원의 상해보험은 입사 후 7일 이내에 가입되어야 공백이 없는 것으로 인정됩니다."
+      },
+      {
+        id: 6,
+        domainId: 1,
+        domain: "Ⅰ. 관리지표",
+        subDomain: "1-3. 재정",
+        title: "6. 사업비 비율",
+        isEsg: false,
+        type: "quantitative",
+        purpose: "시설이 사업비 비중 향상을 위해 노력하고 있는지 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "시설 총 지출액의 35% 이상",
+          normal: "시설 총 지출액의 25% 이상 ~ 35% 미만",
+          deficient: "시설 총 지출액의 25% 미만"
+        },
+        items: [
+          { id: "6-1", text: "① 최근 3년간 세출결산서 기준 [관03 사업비] 전체 합계가 총 지출액(관02 재산조성비, 관07 예비비, 차기이월금 제외)의 35% 이상을 차지한다." }
+        ],
+        requiredDocs: "최근 3개년(2024~2026) 희망이음 세출결산서(관·항·목 명시)",
+        keyNotes: "절대평가(35% 이상 충실)로 변경되었습니다. 분모에서 재산조성비, 예비비, 차기이월금을 정확히 제외해야 합니다."
+      },
+      {
+        id: 7,
+        domainId: 1,
+        domain: "Ⅰ. 관리지표",
+        subDomain: "1-3. 재정",
+        title: "7. 외부자원금 개발 비율",
+        isEsg: false,
+        type: "quantitative",
+        purpose: "시설이 외부자원금 개발을 위해 노력하고 있는지 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "시설 총 예산액의 35% 이상",
+          normal: "시설 총 예산액의 25% 이상 ~ 35% 미만",
+          deficient: "시설 총 예산액의 25% 미만"
+        },
+        items: [
+          { id: "7-1", text: "① 최근 3년간 세입결산서 기준 외부자원금(후원금+민간자원금+정부지원금)이 시설 총 예산액(기능보강비 세출, 이월금 제외)의 35% 이상이다. (※법인후원금/법인전입금/경상보조금/현물은 분자에서 제외)" }
+        ],
+        requiredDocs: "최근 3개년(2024~2026) 세입결산서, 외부자원금 공모 선정 공문 및 입금 내역서",
+        keyNotes: "법인전입금(법인후원금 포함)은 외부자원금 분자에 포함되지 않으므로 순수 외부 모금/공모사업 실적을 확보해야 합니다."
+      },
+
+      // Domain 2: 조직역량지표
+      {
+        id: 8,
+        domainId: 2,
+        domain: "Ⅱ. 조직역량지표",
+        subDomain: "2-1. 지역사회환경의 이해와 협력",
+        title: "8. 지역사회 환경 변화 대응 및 네트워크 협력",
+        isEsg: true,
+        type: "qualitative",
+        purpose: "지역사회 환경 변화에 대한 이해를 토대로 시설을 운영하며, 지역 내 다양한 조직과 협력하는지 평가함 (인터뷰 지표)",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "3개 세부항목 모두 충족하며 내용이 충실함",
+          normal: "3개 세부항목을 충족하나 내용이 보통임",
+          deficient: "일부 항목만 충족하거나 보완이 필요함"
+        },
+        items: [
+          { id: "8-1", text: "① 지역사회 내·외부 환경 특성(법령변화, 인구통계, 욕구조사 등)을 파악하여 직원들과 공유하고 있다. (시설 자체 작성 지역사회분석보고서, 회의록 등)" },
+          { id: "8-2", text: "② 파악된 지역사회 내·외부 환경 특성에 따라 시설 및 사업을 운영하고 있다. (최근 5년 이내 중장기계획서, 연간계획서, 사업 반영 정합성)" },
+          { id: "8-3", text: "③ 지역 내 다양한 조직과 공적 네트워크를 구축하여 협업을 실시하고 있다. (공문/협약서 + 실제 공동사업/협업 실적자료 필수, 단순연락 불가)" }
+        ],
+        requiredDocs: "최근 5년 이내 중장기발전계획서, 연간운영계획서, 지역사회 욕구조사/분석보고서, 내부공유 회의록, 네트워크 협약서 및 협업 사업계획/결과보고서",
+        keyNotes: "협약서만 있고 실제 협업 실적이 없으면 미인정됩니다. 담당자 및 관리자 인터뷰 시 환경분석 결과와 기관 사업 방향의 연계성을 구체적으로 설명해야 합니다."
+      },
+      {
+        id: 9,
+        domainId: 2,
+        domain: "Ⅱ. 조직역량지표",
+        subDomain: "2-1. 지역사회환경의 이해와 협력",
+        title: "9. 주민의 참여",
+        isEsg: false,
+        type: "qualitative",
+        purpose: "주민 참여를 위한 시설의 노력과 참여를 통한 시설의 변화를 평가함 (인터뷰 지표)",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "2개 세부항목 모두 충족하며 충실함",
+          normal: "2개 세부항목 충족하나 보통임",
+          deficient: "일부 항목만 충족하거나 보완 필요"
+        },
+        items: [
+          { id: "9-1", text: "① 지역주민이 참여할 수 있는 기반이 마련되어 있다. (주민공청회/간담회, 주민기획단, 주민동아리, 자치조직 운영 규정 및 지침)" },
+          { id: "9-2", text: "② 주민 주도로 수행된 사업 또는 주민 의견을 반영한 시설 운영의 변화가 있다. (주민 제안이 사업 및 공간/시설 운영에 반영된 구체적 실적 근거)" }
+        ],
+        requiredDocs: "주민참여기반 운영계획서, 주민간담회/공청회 회의록, 주민주도 모임 활동일지, 주민 제안 반영 전·후 결과보고서",
+        keyNotes: "단순 프로그램 수강이 아니라 주민이 주체적으로 의견을 내고 이것이 복지관 사업이나 공간 운영 변화로 이어진 '변화 사례'를 명확히 제시해야 합니다."
+      },
+      {
+        id: 10,
+        domainId: 2,
+        domain: "Ⅱ. 조직역량지표",
+        subDomain: "2-2. 인력의 전문성",
+        title: "10. 직원교육체계",
+        isEsg: false,
+        type: "mixed",
+        purpose: "직원의 직무 역량 강화를 위해 조직이 어떻게 노력하는지 평가함 (정량+인터뷰)",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "3개 세부항목 모두 충족",
+          normal: "2개 세부항목 충족",
+          deficient: "1개 이하 항목 충족"
+        },
+        items: [
+          { id: "10-1", text: "① 직원의 직무 역량 강화를 위한 교육 체계(계획-실행-결과-환류)를 수립하고 운영하고 있다. (욕구조사 기반 연간계획, 만족도 조사 및 차기 반영)" },
+          { id: "10-2", text: "② 직원의 직무 역량 강화를 목적으로 직원 1인당 연평균 교육활동비 200,000원 이상 집행하고 있다. (기본인력 19명 기준, 1인 1회 최대 50만원)", year2026: true },
+          { id: "10-3", text: "③ 직원교육은 직원의 직무 역량 강화에 도움이 되고 있다. (직원 인터뷰를 통해 직무 연계 교육 효과 확인)" }
+        ],
+        requiredDocs: "연간 직원교육계획서 및 결과보고서, 교육비 지급내역서 및 지출결의서, 교육참가보고서, 직무기술서, 개별 슈퍼비전/학습계획서",
+        keyNotes: "교육활동비 충실 기준이 1인당 연 20만원으로 조정되었습니다. 단순 기관방문이나 대학원 학비, 총회비 등은 교육비에서 제외되니 사전 정리가 필요합니다."
+      },
+      {
+        id: 11,
+        domainId: 2,
+        domain: "Ⅱ. 조직역량지표",
+        subDomain: "2-2. 인력의 전문성",
+        title: "11. 시설장의 자격 및 전문성",
+        isEsg: true,
+        type: "qualitative",
+        purpose: "시설 운영의 최고 책임자인 시설장의 자격요건 충족 여부와 전문성을 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "3개 세부항목 모두 충족",
+          normal: "2개 세부항목 충족",
+          deficient: "1개 이하 항목 충족"
+        },
+        items: [
+          { id: "11-1", text: "① 사회복지사 1급 자격증을 소지하고 있다. (2024.1.1. 기준 소지 확인)" },
+          { id: "11-2", text: "② 사회복지시설 근무 경력이 15년 이상이다. (2024.1.1. 기준, 사회복지사업법상 '시설' 경력만 인정, 법인 사무국 근무 경력 미인정)" },
+          { id: "11-3", text: "③ 시설장은 조직의 책임자로서 지역사회환경 변화에 대응하여 중장기 전략을 수립하고 조직과 구성원을 관리하고 있다. (현장평가 당일 시설장 인터뷰)" }
+        ],
+        requiredDocs: "시설장 사회복지사 1급 자격증 사본, 경력증명서(사회복지시설 명시), 건강보험자격득실확인서",
+        keyNotes: "자격 및 경력 기준일은 2024. 1. 1. 기준입니다. 법인 사무국 경력은 시설 경력으로 인정되지 않으므로 사전에 경력 증명서를 점검하세요."
+      },
+      {
+        id: 12,
+        domainId: 2,
+        domain: "Ⅱ. 조직역량지표",
+        subDomain: "2-2. 인력의 전문성",
+        title: "12. 중간관리자의 자격 및 전문성",
+        isEsg: false,
+        type: "qualitative",
+        purpose: "시설의 중간관리자가 시설 운영과 사업 관리에 필요한 자격요건과 전문성을 갖추고 있는지 평가함 (최선임 1인)",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "3개 세부항목 모두 충족",
+          normal: "2개 세부항목 충족",
+          deficient: "1개 이하 항목 충족"
+        },
+        items: [
+          { id: "12-1", text: "① 사회복지사 1급 자격증을 소지하고 있다. (2024.1.1. 기준 소지 확인)" },
+          { id: "12-2", text: "② 사회복지시설 근무 경력이 15년 이상이다. (2024.1.1. 기준, 법인 사무국 경력 미인정)" },
+          { id: "12-3", text: "③ 중간관리자로서 환경변화에 따른 사업체계 이해, 슈퍼비전 제공, 적극적인 지역사회 협력 등 조직 및 사업 관리 역량을 갖추고 있다. (인터뷰)" }
+        ],
+        requiredDocs: "최선임 중간관리자 자격증 사본, 경력증명서, 슈퍼비전 체계도 및 계획서/기록지, 사업평가 보고서",
+        keyNotes: "부관장, 사무국장, 부장 등 조직 내 최선임 중간관리자 1인이 대상입니다. 팀원 슈퍼비전 기록지와 지역사회 연계 실적이 인터뷰 근거로 활용됩니다."
+      },
+      {
+        id: 13,
+        domainId: 2,
+        domain: "Ⅱ. 조직역량지표",
+        subDomain: "2-3. 인권증진",
+        title: "13. 직원의 인권",
+        isEsg: true,
+        type: "qualitative",
+        purpose: "직원의 기본적인 권리와 인권을 보호하여 질 높은 서비스의 기반을 마련했는지 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "5개 세부항목 모두 충족하며 충실함",
+          normal: "5개 세부항목 충족하나 보통임",
+          deficient: "일부 항목만 충족하거나 보완 필요"
+        },
+        items: [
+          { id: "13-1", text: "① 직원 인권 보장 및 고충처리 관련 규정(직장 내 괴롭힘, 이용자에 의한 인권침해 대응 포함)이 각각 명문화되어 있다." },
+          { id: "13-2", text: "② 직원의 고충처리를 위한 공식적인 기구(고충처리위원회, 노사협의회 전담기구 등)가 구성되어 있고 직원이 인지하고 있다." },
+          { id: "13-3", text: "③ 직원 고충에 대해 적극적으로 대응하고 있다. (정례 간담회/면담 등 최소 연 1회 이상, 2026년부터 연 2회 이상 실시)", year2026: true },
+          { id: "13-4", text: "④ 고충처리는 규정에 근거하여 10일 이내에 처리결과를 통보/공지하고 있다." },
+          { id: "13-5", text: "⑤ 법정 의무교육 외에 별도로 직원 인권보장 관련 교육을 연 1회 이상 실시하고 있다. (14-④ 이용자인권교육과 별개 실시)", year2026: true }
+        ],
+        requiredDocs: "인사규정/취업규칙, 직원고충처리 규정, 고충처리위원회 명단 및 회의록, 직원간담회/면담 일지(연2회-2026년), 직원인권교육 계획서 및 결과보고서(수료증)",
+        keyNotes: "직장내 괴롭힘 예방교육이 2026년부터 법정의무교육으로 지정됨에 따라, 2026년에는 법정교육 외에 별도의 '직원 인권보장 교육'을 연 1회 이상 추가 실시해야 인정됩니다."
+      },
+      {
+        id: 14,
+        domainId: 2,
+        domain: "Ⅱ. 조직역량지표",
+        subDomain: "2-3. 인권증진",
+        title: "14. 이용자 인권보장",
+        isEsg: true,
+        type: "qualitative",
+        purpose: "이용자의 인권보장을 위한 규정을 마련하고, 이용자 및 직원을 대상으로 인권교육 실시 및 관련 정보를 제공하여 이용자 인권을 보장하고 있는지 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "5개 세부항목 모두 충족하며 충실함",
+          normal: "5개 세부항목 충족하나 보통임",
+          deficient: "일부 항목만 충족하거나 보완 필요"
+        },
+        items: [
+          { id: "14-1", text: "① 이용자 인권보장 관련 규정(서비스 차별금지, 위기/학대 대응 절차 등)이 마련되어 있다." },
+          { id: "14-2", text: "② 이용자 인권보장에 대한 정보(권리장전, 차별금지 안내, 서비스 거부권 등)를 원내외에 게시/제공하고 있다." },
+          { id: "14-3", text: "③ 이용자를 대상으로 한 이용자 인권교육을 연 1회 이상 계획하고 실시하고 있다. (온·오프라인 모두 인정, 노인일자리 등 의무교육 제외)" },
+          { id: "14-4", text: "④ 직원을 대상으로 한 이용자의 인권에 관한 교육을 연 1회 이상 계획하고 실시하고 있다. (13-⑤ 직원인권교육과 별개 운영, 외부전문강사/공인과정)" },
+          { id: "14-5", text: "⑤ 이용자 인권침해 건은 관련 법규와 규정에 따라 적법하게 조사·조치하고 있다. (미발생 시에도 절차 완비 시 인정)" }
+        ],
+        requiredDocs: "이용자 권리선언문/인권규정, 시설 내 인권 게시물, 이용자 대상 인권교육 계획/결과보고서, 직원 대상 이용자인권교육 계획/수료증, 인권진정 접수처리 대장",
+        keyNotes: "직원 대상 인권교육은 '직원의 인권(13-⑤)'과 '이용자의 인권(14-④)' 2가지를 각각 구분하여 연 1회씩(총 2회) 별도로 실시해야 합니다."
+      },
+      {
+        id: 15,
+        domainId: 2,
+        domain: "Ⅱ. 조직역량지표",
+        subDomain: "2-3. 인권증진",
+        title: "15. 서비스 절차의 명문화 및 이용자 고충(불편사항) 처리",
+        isEsg: true,
+        type: "qualitative",
+        purpose: "이용자가 서비스를 이용하기 위한 규정과 고충 처리 절차를 갖추고 있으며, 이를 안내하고 있는지 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "3개 세부항목 모두 충족하며 충실함",
+          normal: "3개 세부항목 충족하나 보통임",
+          deficient: "일부 항목만 충족하거나 보완 필요"
+        },
+        items: [
+          { id: "15-1", text: "① 서비스 절차에 대한 규정 및 이용자 고충처리 규정을 마련하여 이용자에게 다양한 방법(안내문, 홈페이지, 소식지 등)으로 안내하고 있다." },
+          { id: "15-2", text: "② 규정에 의해 서비스가 진행되고 있다. (개인정보 수집·이용 동의서, 서비스계약서, 이용자 자기결정권 보장 확인)" },
+          { id: "15-3", text: "③ 이용자 고충(불편사항) 접수창구(홈페이지, SNS, 건의함 등)가 운영되며 규정에 의해 처리 및 문서화되고 있다. (고충 미발생 시에도 연 1회 이상 고충파악 회의 근거 필요)" }
+        ],
+        requiredDocs: "서비스 이용 지침/매뉴얼, 고충처리 규정 및 업무분장, 개인정보 제공 동의서철, 온·오프라인 건의함/게시판 접수기록, 고충처리 대장 및 위원회 회의록",
+        keyNotes: "평가기간 중 접수된 고충이 없더라도, 연 1회 이상 '이용자 고충 및 불편사항 파악을 위한 회의(간담회)'를 개최한 근거가 반드시 있어야 충실로 인정됩니다."
+      },
+
+      // Domain 3: 사업역량지표
+      {
+        id: 16,
+        domainId: 3,
+        domain: "Ⅲ. 사업역량지표",
+        subDomain: "3-1. 심층 사례관리",
+        title: "16. 사례관리의 실행체계",
+        isEsg: false,
+        type: "qualitative",
+        purpose: "이용자의 문제 해결을 위해 적절한 사정을 실시하고, 효과적인 서비스를 계획·제공하는 실행체계가 구축되어 있는지 평가함 (총 5개 case 제출: 진행 3건, 종결 2건)",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31. (매뉴얼은 2026년)",
+        scaleCriteria: {
+          loyal: "3개 세부항목 모두 충족하며 충실함 (5개 case 전체 검토)",
+          normal: "3개 세부항목 충족하나 보통임",
+          deficient: "5개 미만 제출 시 충실 불가 또는 항목 보완 필요"
+        },
+        items: [
+          { id: "16-1", text: "① 사례관리 운영(실행)체계가 구축되어 있다. (사례발굴~사후지원 전 과정에 대한 시설 자체 사례관리 매뉴얼/지침 2026년 마련 확인)", year2026: true },
+          { id: "16-2", text: "② 사례관리 운영체계를 기반으로 사정-개별화된 목표/개입계획-정기점검(모니터링)-합의된 종결 및 계획에 의한 사후지원이 체계적으로 이루어지고 있다." },
+          { id: "16-3", text: "③ 사례관리 전체 과정(개입계획, 실천)에 대상자의 구체적 역할과 이용자 참여가 이루어지고 있다." }
+        ],
+        requiredDocs: "시설 자체 사례관리 매뉴얼(2026년), 연간 사례관리 사업계획서, 제출 대상 5개 Case 일체(사정기록지, 서비스계획서, 과정기록지, 점검/평가기록지, 종결보고서, 사후관리기록지)",
+        keyNotes: "3개월 이상 개입된 5개 case(진행 3건, 종결 2건)가 필수입니다. 5개 미만 제출 시 충실 불가합니다. 전 과정에서 이용자의 능동적 역할 기록이 있어야 합니다."
+      },
+      {
+        id: 17,
+        domainId: 3,
+        domain: "Ⅲ. 사업역량지표",
+        subDomain: "3-1. 심층 사례관리",
+        title: "17. 사례관리의 지원체계",
+        isEsg: false,
+        type: "qualitative",
+        purpose: "이용자의 문제 해결을 위해 담당자의 전문성 강화, 자원 발굴 및 연계가 체계적으로 이루어지고 있는지를 평가함",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31.",
+        scaleCriteria: {
+          loyal: "3개 세부항목 모두 충족하며 충실함",
+          normal: "3개 세부항목 충족하나 보통임",
+          deficient: "일부 항목만 충족하거나 보완 필요"
+        },
+        items: [
+          { id: "17-1", text: "① 사례발굴을 위한 노력을 수시로 하고 있다. (네트워크 공문, 출장일지, 초기접수/면접지, 발굴 홍보)" },
+          { id: "17-2", text: "② 사례관리자에 대한 슈퍼비전이 정기적으로 실시되고 있다. (2026년 기준 내부 월 1회 이상, 외부 연 2회 이상 실시 필수-시설 전체 기준)", year2026: true },
+          { id: "17-3", text: "③ 사례관리 관련 자원 연계 및 민·관 협력체계를 구축하고 있다. (통합사례회의 참여 근거, 서비스 조정/의뢰 공문, 출장기록부)" }
+        ],
+        requiredDocs: "사례발굴 출장/홍보 근거, 슈퍼비전 계획서 및 월별 슈퍼비전 기록지(내부 월1회, 외부 연2회 증빙), 통합사례회의 참석 공문 및 회의록, 자원연계 의뢰서",
+        keyNotes: "2026년부터 신설된 정기 슈퍼비전 기준(내부 월 1회, 외부 연 2회)을 반드시 충족해야 합니다. 단순 업무지시 회의는 슈퍼비전으로 인정되지 않습니다."
+      },
+      {
+        id: 18,
+        domainId: 3,
+        domain: "Ⅲ. 사업역량지표",
+        subDomain: "3-2. 사업 평가",
+        title: "18~19. 사업 평가 (대표사업 2개)",
+        isEsg: false,
+        type: "qualitative",
+        purpose: "사업(프로그램)의 기획, 수행과정 및 결과에 대한 평가가 전문적이고 체계적으로 운영되고 있는지 평가함 (2개 사업 제출, 분야 제한 없음)",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31. (계획-수행-평가-환류 완료 사업)",
+        scaleCriteria: {
+          loyal: "4개 세부항목 모두 충족하며 충실함 (2개 사업 각각 평가)",
+          normal: "4개 세부항목 충족하나 보통임",
+          deficient: "일부 항목만 충족하거나 보완 필요"
+        },
+        items: [
+          { id: "18-1", text: "① 사업(프로그램)이 주민 욕구 및 지역 환경변화를 반영하여 전문적으로 기획되고 있다. (목적-목표 구체성, 산출/성과지표 명확성)" },
+          { id: "18-2", text: "② 사업(프로그램) 수행과정이 적절하며 과정기록 및 인적·물적 자원동원이 충실히 이루어졌다. (변경 시 적법 절차 및 근거)" },
+          { id: "18-3", text: "③ 사업 결과에 대한 과정평가 및 성과평가가 측정도구를 활용하여 적절히 이루어졌고, 참여자 평가가 반영되었다." },
+          { id: "18-4", text: "④ 평가 결과가 차기 사업계획에 적절히 피드백(수정·보완·확대)되었으며 결과가 지역사회에 홍보·공유되었다." }
+        ],
+        requiredDocs: "제출 사업 2개 계획서, 욕구조사/사전자료, 프로그램 운영일지 및 과정기록지, 결과평가보고서(성과측정 설문지 분석), 사업보고서/홈페이지 게시 홍보물",
+        keyNotes: "기존 4개 제출에서 2개 제출로 축소되었습니다. 계획→수행→평가→환류의 사이클이 2026년까지 완결되어 2027년 1분기까지 확인 가능해야 합니다."
+      },
+      {
+        id: 20,
+        domainId: 3,
+        domain: "Ⅲ. 사업역량지표",
+        subDomain: "3-2. 사업 평가",
+        title: "20. 서울시 정책사업 평가 (신규, 1개 사업)",
+        isEsg: false,
+        type: "qualitative",
+        purpose: "서울시의 정책사업을 지역사회 상황과 욕구에 부합하도록 수행하고 있는지 평가함 (1개 사업 제출)",
+        targetPeriod: "2024. 1. 1. ~ 2026. 12. 31. 수행 사업",
+        scaleCriteria: {
+          loyal: "4개 세부항목 모두 충족하며 충실함",
+          normal: "4개 세부항목 충족하나 보통임",
+          deficient: "일부 항목만 충족하거나 보완 필요"
+        },
+        items: [
+          { id: "20-1", text: "① 서울시 정책사업(지역밀착형, 기능특화, 돌봄특화, 이동목욕, 시설개방, 고립가구전담, 아름다운 동행가게, 서울연결처방 등 중 1개)이 지역상황에 맞게 기획되었다." },
+          { id: "20-2", text: "② 사업 계획에 근거하여 체계적으로 수행되고 예산 집행 및 자원 동원이 적절히 이루어졌다." },
+          { id: "20-3", text: "③ 사업 결과에 대한 과정 및 성과평가가 적절히 이루어지고 참여자 의견이 반영되었다." },
+          { id: "20-4", text: "④ 평가 결과가 사업에 반영되었으며 사업 결과 및 효과가 대외적으로 홍보·공유되었다." }
+        ],
+        requiredDocs: "선택 정책사업 공모신청서/선정공문, 사업계획서, 사업일지 및 과정기록, 예산 집행 내역, 결과평가보고서, 홍보/언론보도 자료",
+        keyNotes: "2027년 신규 지표입니다. 복지관에서 수행한 서울시 정책사업 1개를 선정하여 기획-수행-평가-환류 체계를 충실히 갖추어 제시해야 합니다."
+      }
+    ];
+
+    // App State
+    let appState = {
+      instName: "",
+      inspectorName: "",
+      checklist: {}, 
+      memos: {}, 
+      docStatus: {}, 
+      calcData: {
+        calc4: { y24: 12, y25: 12, y26: 12 },
+        calc6: { num: 1200000000, den: 3000000000 },
+        calc7: { num: 1100000000, den: 3000000000 },
+        calc10: { y24: 4500000, y25: 4500000, y26: 4500000 }
+      }
+    };
+
+    const STORAGE_KEY = "SEOUL_WELFARE_EVAL_2027_V1";
+
+    // Initialize
+    document.addEventListener("DOMContentLoaded", () => {
+      loadState();
+      renderMarkdownGuide();
+      renderIndicators();
+      renderDocsTable();
+      renderSummaryTable();
+      runCalculator();
+      updateDashboard();
+      initChart();
+    });
+
+    function renderMarkdownGuide() {
+      const guideContainer = document.getElementById("guide-markdown-content");
+      if (guideContainer && typeof marked !== 'undefined') {
+        guideContainer.innerHTML = marked.parse(GUIDE_MD_CONTENT);
+      }
+    }
+
+    // Save & Load
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      updateDashboard();
+      renderSummaryTable();
+    }
+
+    function loadState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          appState = JSON.parse(saved);
+          document.getElementById("instName").value = appState.instName || "";
+          document.getElementById("inspectorName").value = appState.inspectorName || "";
+          
+          if (appState.calcData) {
+            if (appState.calcData.calc4) {
+              document.getElementById("calc4-y24").value = appState.calcData.calc4.y24;
+              document.getElementById("calc4-y25").value = appState.calcData.calc4.y25;
+              document.getElementById("calc4-y26").value = appState.calcData.calc4.y26;
+            }
+            if (appState.calcData.calc6) {
+              document.getElementById("calc6-num").value = appState.calcData.calc6.num;
+              document.getElementById("calc6-den").value = appState.calcData.calc6.den;
+            }
+            if (appState.calcData.calc7) {
+              document.getElementById("calc7-num").value = appState.calcData.calc7.num;
+              document.getElementById("calc7-den").value = appState.calcData.calc7.den;
+            }
+            if (appState.calcData.calc10) {
+              document.getElementById("calc10-y24").value = appState.calcData.calc10.y24;
+              document.getElementById("calc10-y25").value = appState.calcData.calc10.y25;
+              document.getElementById("calc10-y26").value = appState.calcData.calc10.y26;
+            }
+          }
+        } catch(e) {
+          console.error("Failed to load state", e);
+        }
+      }
+    }
+
+    function saveInstInfo() {
+      appState.instName = document.getElementById("instName").value;
+      appState.inspectorName = document.getElementById("inspectorName").value;
+      saveState();
+    }
+
+    // Switch Tabs
+    function switchTab(tabId) {
+      document.querySelectorAll(".tab-content").forEach(el => el.classList.add("hidden"));
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.remove("text-blue-400", "bg-slate-800");
+        btn.classList.add("text-slate-400");
+      });
+
+      const target = document.getElementById("tab-" + tabId);
+      const targetBtn = document.getElementById("tab-btn-" + tabId);
+      if (target) target.classList.remove("hidden");
+      if (targetBtn) {
+        targetBtn.classList.remove("text-slate-400");
+        targetBtn.classList.add("text-blue-400", "bg-slate-800");
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Determine Indicator Grade
+    function evaluateIndicator(ind) {
+      if (ind.type === "quantitative") {
+        if (ind.id === 4) { // 근속률
+          const c4 = appState.calcData?.calc4 || { y24:12, y25:12, y26:12 };
+          const avg = ((parseFloat(c4.y24)||0) + (parseFloat(c4.y25)||0) + (parseFloat(c4.y26)||0)) / 3;
+          const pct = (avg / 19) * 100;
+          if (pct >= 60) return { grade: "충실", score: "60% 이상", class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+          if (pct >= 30) return { grade: "보통", score: "30%~60% 미만", class: "bg-amber-100 text-amber-800 border border-amber-200" };
+          return { grade: "보완", score: "30% 미만", class: "bg-rose-100 text-rose-800 border border-rose-200" };
+        }
+        if (ind.id === 6) { // 사업비 비율
+          const c6 = appState.calcData?.calc6 || { num:1200000000, den:3000000000 };
+          const num = parseFloat(c6.num) || 0;
+          const den = parseFloat(c6.den) || 1;
+          const pct = (num / den) * 100;
+          if (pct >= 35) return { grade: "충실", score: pct.toFixed(1) + "%", class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+          if (pct >= 25) return { grade: "보통", score: pct.toFixed(1) + "%", class: "bg-amber-100 text-amber-800 border border-amber-200" };
+          return { grade: "보완", score: pct.toFixed(1) + "%", class: "bg-rose-100 text-rose-800 border border-rose-200" };
+        }
+        if (ind.id === 7) { // 외부자원금 개발 비율
+          const c7 = appState.calcData?.calc7 || { num:1100000000, den:3000000000 };
+          const num = parseFloat(c7.num) || 0;
+          const den = parseFloat(c7.den) || 1;
+          const pct = (num / den) * 100;
+          if (pct >= 35) return { grade: "충실", score: pct.toFixed(1) + "%", class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+          if (pct >= 25) return { grade: "보통", score: pct.toFixed(1) + "%", class: "bg-amber-100 text-amber-800 border border-amber-200" };
+          return { grade: "보완", score: pct.toFixed(1) + "%", class: "bg-rose-100 text-rose-800 border border-rose-200" };
+        }
+      }
+
+      // Qualitative or Mixed
+      const total = ind.items.length;
+      let checkedCount = 0;
+      ind.items.forEach(item => {
+        if (appState.checklist[item.id]) checkedCount++;
+      });
+
+      if (ind.id === 2) { 
+        if (checkedCount >= 3) return { grade: "충실", score: `${checkedCount}/${total}`, class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+        if (checkedCount === 2) return { grade: "보통", score: `${checkedCount}/${total}`, class: "bg-amber-100 text-amber-800 border border-amber-200" };
+        return { grade: "보완", score: `${checkedCount}/${total}`, class: "bg-rose-100 text-rose-800 border border-rose-200" };
+      }
+
+      if (ind.id === 3) { 
+        if (checkedCount === 5) return { grade: "충실", score: "5/5", class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+        if (checkedCount >= 3) return { grade: "보통", score: `${checkedCount}/5`, class: "bg-amber-100 text-amber-800 border border-amber-200" };
+        return { grade: "보완", score: `${checkedCount}/5`, class: "bg-rose-100 text-rose-800 border border-rose-200" };
+      }
+
+      if (ind.id === 5) { 
+        if (checkedCount === 5) return { grade: "충실", score: "5/5", class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+        if (checkedCount === 4) return { grade: "보통", score: "4/5", class: "bg-amber-100 text-amber-800 border border-amber-200" };
+        return { grade: "보완", score: `${checkedCount}/5`, class: "bg-rose-100 text-rose-800 border border-rose-200" };
+      }
+
+      if (total === 3) { 
+        if (checkedCount === 3) return { grade: "충실", score: "3/3", class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+        if (checkedCount === 2) return { grade: "보통", score: "2/3", class: "bg-amber-100 text-amber-800 border border-amber-200" };
+        return { grade: "보완", score: `${checkedCount}/3`, class: "bg-rose-100 text-rose-800 border border-rose-200" };
+      }
+
+      if (total === 2) { 
+        if (checkedCount === 2) return { grade: "충실", score: "2/2", class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+        if (checkedCount === 1) return { grade: "보통", score: "1/2", class: "bg-amber-100 text-amber-800 border border-amber-200" };
+        return { grade: "보완", score: "0/2", class: "bg-rose-100 text-rose-800 border border-rose-200" };
+      }
+
+      if (total === 4) { 
+        if (checkedCount === 4) return { grade: "충실", score: "4/4", class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+        if (checkedCount >= 2) return { grade: "보통", score: `${checkedCount}/4`, class: "bg-amber-100 text-amber-800 border border-amber-200" };
+        return { grade: "보완", score: `${checkedCount}/4`, class: "bg-rose-100 text-rose-800 border border-rose-200" };
+      }
+
+      if (total === 5) { 
+        if (checkedCount === 5) return { grade: "충실", score: "5/5", class: "bg-emerald-100 text-emerald-800 border border-emerald-200" };
+        if (checkedCount >= 3) return { grade: "보통", score: `${checkedCount}/5`, class: "bg-amber-100 text-amber-800 border border-amber-200" };
+        return { grade: "보완", score: `${checkedCount}/5`, class: "bg-rose-100 text-rose-800 border border-rose-200" };
+      }
+
+      return { grade: "보완", score: `${checkedCount}/${total}`, class: "bg-rose-100 text-rose-800 border border-rose-200" };
+    }
+
+    // Render Indicators into Domain tabs
+    function renderIndicators() {
+      const container1 = document.getElementById("indicators-domain1");
+      const container2 = document.getElementById("indicators-domain2");
+      const container3 = document.getElementById("indicators-domain3");
+
+      container1.innerHTML = "";
+      container2.innerHTML = "";
+      container3.innerHTML = "";
+
+      INDICATOR_DATA.forEach(ind => {
+        const evalResult = evaluateIndicator(ind);
+        const cardHtml = `
+          <div class="card-box bg-white rounded-3xl shadow-sm border border-slate-200 p-6 space-y-4 transition hover:shadow-md" id="ind-card-${ind.id}">
+            <!-- Card Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-slate-100">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">${ind.subDomain}</span>
+                <h3 class="text-base font-extrabold text-slate-800">${ind.title}</h3>
+                ${ind.isEsg ? '<span class="badge-esg text-[10px] font-bold text-white px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm"><i class="fa-solid fa-leaf"></i> ESG</span>' : ''}
+                ${ind.id === 20 ? '<span class="badge-new text-[10px] font-bold text-white px-2.5 py-0.5 rounded-full shadow-sm">2027 신규</span>' : ''}
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl ${evalResult.class}" id="grade-badge-${ind.id}">
+                  현재 판정: ${evalResult.grade} (${evalResult.score})
+                </span>
+              </div>
+            </div>
+
+            <!-- Purpose & Target Period -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+              <div><strong class="text-slate-700">평가 목적:</strong> ${ind.purpose}</div>
+              <div><strong class="text-slate-700">평가 대상기간:</strong> ${ind.targetPeriod}</div>
+            </div>
+
+            <!-- Check items -->
+            <div class="space-y-2.5">
+              <label class="block text-xs font-extrabold text-slate-700 flex items-center gap-1.5">
+                <i class="fa-solid fa-square-check text-blue-600"></i> 세부 점검 항목 (클릭 시 자동 판정):
+              </label>
+              ${ind.items.map(item => `
+                <div class="flex items-start gap-3 p-3 rounded-2xl border border-slate-100 hover:bg-blue-50/40 hover:border-blue-200 transition">
+                  <input type="checkbox" id="chk-${item.id}" ${appState.checklist[item.id] ? "checked" : ""} onchange="onItemCheck('${item.id}', ${ind.id})" class="w-4 h-4 mt-0.5 text-blue-600 rounded-md focus:ring-blue-500 cursor-pointer">
+                  <label for="chk-${item.id}" class="text-xs text-slate-700 cursor-pointer flex-1 leading-relaxed">
+                    ${item.text}
+                    ${item.year2026 ? '<span class="ml-1.5 text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200">2026년 필수적용</span>' : ''}
+                  </label>
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- Evaluation Criteria Scale -->
+            <div class="text-[11px] text-slate-500 flex flex-wrap gap-x-4 gap-y-1 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+              <span><strong>충실:</strong> ${ind.scaleCriteria.loyal}</span>
+              <span><strong>보통:</strong> ${ind.scaleCriteria.normal}</span>
+              <span><strong>보완:</strong> ${ind.scaleCriteria.deficient}</span>
+            </div>
+
+            <!-- Docs & Key Note Collapse -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 text-xs">
+              <div class="p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/80">
+                <span class="font-bold text-amber-900 flex items-center gap-1.5 mb-1">
+                  <i class="fa-solid fa-file-lines text-amber-600"></i> 필수 준비 서류 및 근거
+                </span>
+                <p class="text-amber-900 text-[11px] leading-relaxed">${ind.requiredDocs}</p>
+              </div>
+
+              <div class="p-3.5 bg-blue-50/70 rounded-2xl border border-blue-200/80">
+                <span class="font-bold text-blue-900 flex items-center gap-1.5 mb-1">
+                  <i class="fa-solid fa-lightbulb text-blue-600"></i> 실무 대비 핵심 팁 & 주의사항
+                </span>
+                <p class="text-blue-950 text-[11px] leading-relaxed">${ind.keyNotes}</p>
+              </div>
+            </div>
+
+            <!-- Memo input -->
+            <div class="pt-1">
+              <label class="block text-[11px] font-bold text-slate-600 mb-1">기관 자체 추진계획 및 메모</label>
+              <input type="text" id="memo-${ind.id}" value="${appState.memos[ind.id] || ''}" oninput="onMemoChange(${ind.id})" placeholder="예: 2026년 상반기 매뉴얼 개정 예정, 담당: 복지1팀" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-slate-50/50">
+            </div>
+          </div>
+        `;
+
+        if (ind.domainId === 1) container1.innerHTML += cardHtml;
+        else if (ind.domainId === 2) container2.innerHTML += cardHtml;
+        else if (ind.domainId === 3) container3.innerHTML += cardHtml;
+      });
+    }
+
+    function onItemCheck(itemId, indId) {
+      const checkbox = document.getElementById("chk-" + itemId);
+      appState.checklist[itemId] = checkbox.checked;
+      saveState();
+
+      const ind = INDICATOR_DATA.find(x => x.id === indId);
+      if (ind) {
+        const evalRes = evaluateIndicator(ind);
+        const badge = document.getElementById("grade-badge-" + indId);
+        if (badge) {
+          badge.className = `text-xs font-extrabold px-3 py-1.5 rounded-xl ${evalRes.class}`;
+          badge.innerText = `현재 판정: ${evalRes.grade} (${evalRes.score})`;
+        }
+      }
+    }
+
+    function onMemoChange(indId) {
+      const val = document.getElementById("memo-" + indId).value;
+      appState.memos[indId] = val;
+      saveState();
+    }
+
+    // Run Quantitative Calculators
+    function runCalculator() {
+      // Calc 4
+      const y24 = parseFloat(document.getElementById("calc4-y24").value) || 0;
+      const y25 = parseFloat(document.getElementById("calc4-y25").value) || 0;
+      const y26 = parseFloat(document.getElementById("calc4-y26").value) || 0;
+      const avg4 = (y24 + y25 + y26) / 3;
+      const pct4 = (avg4 / 19) * 100;
+      document.getElementById("calc4-avg").innerText = avg4.toFixed(1) + "명";
+      document.getElementById("calc4-result").innerText = pct4.toFixed(2) + "%";
+      const b4 = document.getElementById("calc4-badge");
+      if (pct4 >= 60) {
+        b4.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-200";
+        b4.innerText = `충실 (${pct4.toFixed(1)}%)`;
+      } else if (pct4 >= 30) {
+        b4.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-amber-100 text-amber-800 border border-amber-200";
+        b4.innerText = `보통 (${pct4.toFixed(1)}%)`;
+      } else {
+        b4.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-rose-100 text-rose-800 border border-rose-200";
+        b4.innerText = `보완 (${pct4.toFixed(1)}%)`;
+      }
+
+      // Calc 6
+      const num6 = parseFloat(document.getElementById("calc6-num").value) || 0;
+      const den6 = parseFloat(document.getElementById("calc6-den").value) || 1;
+      const pct6 = (num6 / den6) * 100;
+      document.getElementById("calc6-result").innerText = pct6.toFixed(2) + "%";
+      const b6 = document.getElementById("calc6-badge");
+      if (pct6 >= 35) {
+        b6.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-200";
+        b6.innerText = `충실 (${pct6.toFixed(1)}%)`;
+      } else if (pct6 >= 25) {
+        b6.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-amber-100 text-amber-800 border border-amber-200";
+        b6.innerText = `보통 (${pct6.toFixed(1)}%)`;
+      } else {
+        b6.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-rose-100 text-rose-800 border border-rose-200";
+        b6.innerText = `보완 (${pct6.toFixed(1)}%)`;
+      }
+
+      // Calc 7
+      const num7 = parseFloat(document.getElementById("calc7-num").value) || 0;
+      const den7 = parseFloat(document.getElementById("calc7-den").value) || 1;
+      const pct7 = (num7 / den7) * 100;
+      document.getElementById("calc7-result").innerText = pct7.toFixed(2) + "%";
+      const b7 = document.getElementById("calc7-badge");
+      if (pct7 >= 35) {
+        b7.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-200";
+        b7.innerText = `충실 (${pct7.toFixed(1)}%)`;
+      } else if (pct7 >= 25) {
+        b7.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-amber-100 text-amber-800 border border-amber-200";
+        b7.innerText = `보통 (${pct7.toFixed(1)}%)`;
+      } else {
+        b7.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-rose-100 text-rose-800 border border-rose-200";
+        b7.innerText = `보완 (${pct7.toFixed(1)}%)`;
+      }
+
+      // Calc 10
+      const c10_24 = parseFloat(document.getElementById("calc10-y24").value) || 0;
+      const c10_25 = parseFloat(document.getElementById("calc10-y25").value) || 0;
+      const c10_26 = parseFloat(document.getElementById("calc10-y26").value) || 0;
+      const avg10 = (c10_24 + c10_25 + c10_26) / 3;
+      const perCapita = avg10 / 19;
+      document.getElementById("calc10-avg").innerText = Math.round(avg10).toLocaleString() + "원";
+      document.getElementById("calc10-result").innerText = Math.round(perCapita).toLocaleString() + "원";
+      const b10 = document.getElementById("calc10-badge");
+      if (perCapita >= 200000) {
+        b10.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-200";
+        b10.innerText = "충실 (20만원↑)";
+        appState.checklist["10-2"] = true;
+      } else {
+        b10.className = "px-3 py-1 text-xs font-extrabold rounded-xl bg-rose-100 text-rose-800 border border-rose-200";
+        b10.innerText = "보완 (20만원 미만)";
+        appState.checklist["10-2"] = false;
+      }
+
+      appState.calcData = {
+        calc4: { y24, y25, y26 },
+        calc6: { num: num6, den: den6 },
+        calc7: { num: num7, den: den7 },
+        calc10: { y24: c10_24, y25: c10_25, y26: c10_26 }
+      };
+
+      saveState();
+    }
+
+    // Update Dashboard & Charts
+    let domainChartInstance = null;
+
+    function updateDashboard() {
+      let loyalCount = 0;
+      let normalCount = 0;
+      let deficientCount = 0;
+      let esgLoyalCount = 0;
+      const esgTotal = INDICATOR_DATA.filter(x => x.isEsg).length; // 9
+
+      const domCounts = { 1: { loyal:0, total:7 }, 2: { loyal:0, total:8 }, 3: { loyal:0, total:5 } };
+
+      INDICATOR_DATA.forEach(ind => {
+        const res = evaluateIndicator(ind);
+        if (res.grade === "충실") {
+          loyalCount++;
+          domCounts[ind.domainId].loyal++;
+          if (ind.isEsg) esgLoyalCount++;
+        } else if (res.grade === "보통") {
+          normalCount++;
+        } else {
+          deficientCount++;
+        }
+      });
+
+      const totalPct = Math.round((loyalCount / INDICATOR_DATA.length) * 100);
+      document.getElementById("dash-compliance-rate").innerText = totalPct + "%";
+      document.getElementById("dash-loyal-count").innerText = loyalCount;
+      document.getElementById("dash-normal-count").innerText = normalCount + "개";
+      document.getElementById("dash-deficient-count").innerText = deficientCount + "개";
+      document.getElementById("dash-esg-rate").innerText = `${esgLoyalCount}/${esgTotal}`;
+      document.getElementById("dash-esg-pct").innerText = Math.round((esgLoyalCount / esgTotal) * 100) + "%";
+
+      // Badges in Header & Domains
+      document.getElementById("badge-d1").innerText = `${domCounts[1].loyal}/7`;
+      document.getElementById("badge-d2").innerText = `${domCounts[2].loyal}/8`;
+      document.getElementById("badge-d3").innerText = `${domCounts[3].loyal}/5`;
+
+      document.getElementById("dom-stat-1").innerText = `${domCounts[1].loyal}/7 (${Math.round(domCounts[1].loyal/7*100)}%)`;
+      document.getElementById("dom-stat-2").innerText = `${domCounts[2].loyal}/8 (${Math.round(domCounts[2].loyal/8*100)}%)`;
+      document.getElementById("dom-stat-3").innerText = `${domCounts[3].loyal}/5 (${Math.round(domCounts[3].loyal/5*100)}%)`;
+
+      document.getElementById("status-badge-d1").innerText = `충실 ${domCounts[1].loyal} / 보통 ${INDICATOR_DATA.filter(x=>x.domainId===1 && evaluateIndicator(x).grade==='보통').length} / 보완 ${INDICATOR_DATA.filter(x=>x.domainId===1 && evaluateIndicator(x).grade==='보완').length}`;
+      document.getElementById("status-badge-d2").innerText = `충실 ${domCounts[2].loyal} / 보통 ${INDICATOR_DATA.filter(x=>x.domainId===2 && evaluateIndicator(x).grade==='보통').length} / 보완 ${INDICATOR_DATA.filter(x=>x.domainId===2 && evaluateIndicator(x).grade==='보완').length}`;
+      document.getElementById("status-badge-d3").innerText = `충실 ${domCounts[3].loyal} / 보통 ${INDICATOR_DATA.filter(x=>x.domainId===3 && evaluateIndicator(x).grade==='보통').length} / 보완 ${INDICATOR_DATA.filter(x=>x.domainId===3 && evaluateIndicator(x).grade==='보완').length}`;
+
+      // Print elements
+      document.getElementById("print-inst-name").innerText = appState.instName || "(미입력)";
+      document.getElementById("print-inspector-name").innerText = appState.inspectorName || "(미입력)";
+      document.getElementById("print-date").innerText = new Date().toLocaleDateString("ko-KR", { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      document.getElementById("print-rate").innerText = totalPct + "%";
+      document.getElementById("print-loyal").innerText = loyalCount + "개";
+      document.getElementById("print-normal").innerText = normalCount + "개";
+      document.getElementById("print-deficient").innerText = deficientCount + "개";
+
+      if (domainChartInstance) {
+        domainChartInstance.data.datasets[0].data = [loyalCount, normalCount, deficientCount];
+        domainChartInstance.update();
+      }
+    }
+
+    function initChart() {
+      const ctx = document.getElementById('domainChart').getContext('2d');
+      domainChartInstance = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['충실', '보통', '보완'],
+          datasets: [{
+            data: [0, 0, 20],
+            backgroundColor: ['#10b981', '#f59e0b', '#f43f5e'],
+            borderWidth: 2,
+            borderColor: '#ffffff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, font: { size: 11, family: 'Pretendard', weight: 'bold' } }
+            }
+          },
+          cutout: '70%'
+        }
+      });
+      updateDashboard();
+    }
+
+    // Summary Table in Dashboard
+    let currentFilter = 'all';
+    function filterSummaryTable(filter) {
+      currentFilter = filter;
+      document.querySelectorAll(".sum-filter-btn").forEach(b => {
+        if (b.getAttribute("data-filter") === filter) {
+          b.className = "sum-filter-btn px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-800 text-white transition";
+        } else {
+          b.className = "sum-filter-btn px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+        }
+      });
+      renderSummaryTable();
+    }
+
+    function renderSummaryTable() {
+      const tbody = document.getElementById("summary-table-body");
+      const printTbody = document.getElementById("print-table-body");
+      tbody.innerHTML = "";
+      printTbody.innerHTML = "";
+
+      INDICATOR_DATA.forEach(ind => {
+        const res = evaluateIndicator(ind);
+
+        if (currentFilter === '보완' && res.grade !== '보완') return;
+        if (currentFilter === 'ESG' && !ind.isEsg) return;
+
+        const row = `
+          <tr class="hover:bg-blue-50/40 transition">
+            <td class="py-3 px-4 text-center font-bold text-slate-700">${ind.id}</td>
+            <td class="py-3 px-4 text-slate-500 font-semibold">${ind.domain.split('.')[1] || ind.domain}</td>
+            <td class="py-3 px-4 font-bold text-slate-800">
+              ${ind.title}
+              <span class="block text-[11px] text-slate-400 font-normal truncate max-w-md mt-0.5">${ind.purpose}</span>
+            </td>
+            <td class="py-3 px-4 text-center">
+              ${ind.isEsg ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700 border border-emerald-200">ESG</span>' : '-'}
+            </td>
+            <td class="py-3 px-4 text-center text-slate-500 text-[11px] font-medium">
+              ${ind.type === 'quantitative' ? '정량' : ind.type === 'mixed' ? '정량+인터뷰' : '정성(인터뷰)'}
+            </td>
+            <td class="py-3 px-4 text-center">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold ${res.class}">${res.grade}</span>
+            </td>
+            <td class="py-3 px-4 text-center">
+              <button onclick="gotoIndicator(${ind.domainId}, ${ind.id})" class="text-blue-600 hover:text-blue-800 font-bold text-xs bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-lg transition">
+                이동 <i class="fa-solid fa-chevron-right text-[10px]"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+        tbody.innerHTML += row;
+
+        // Print table row
+        const printRow = `
+          <tr class="border-b">
+            <td class="p-2 text-center border font-bold">${ind.id}</td>
+            <td class="p-2 border font-medium">${ind.title}</td>
+            <td class="p-2 text-center border">${ind.isEsg ? 'ESG' : '-'}</td>
+            <td class="p-2 text-center border font-bold">${res.grade} (${res.score})</td>
+            <td class="p-2 border text-[10px] text-slate-600">${appState.memos[ind.id] || '특이사항 없음'}</td>
+          </tr>
+        `;
+        printTbody.innerHTML += printRow;
+      });
+    }
+
+    function gotoIndicator(domId, indId) {
+      switchTab('domain' + domId);
+      setTimeout(() => {
+        const el = document.getElementById("ind-card-" + indId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.classList.add("ring-2", "ring-blue-500");
+          setTimeout(() => el.classList.remove("ring-2", "ring-blue-500"), 2000);
+        }
+      }, 150);
+    }
+
+    // Documents Table
+    function renderDocsTable() {
+      const tbody = document.getElementById("docs-table-body");
+      tbody.innerHTML = "";
+
+      INDICATOR_DATA.forEach(ind => {
+        const currentStatus = appState.docStatus[ind.id] || "미비";
+        const statusColors = {
+          "완료": "bg-emerald-100 text-emerald-800 border-emerald-300",
+          "진행중": "bg-amber-100 text-amber-800 border-amber-300",
+          "미비": "bg-slate-100 text-slate-600 border-slate-300"
+        };
+
+        const row = `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="py-3.5 px-4 text-center font-bold text-slate-700">${ind.id}</td>
+            <td class="py-3.5 px-4 font-bold text-slate-800">${ind.title}</td>
+            <td class="py-3.5 px-4 text-slate-700 leading-relaxed font-medium">${ind.requiredDocs}</td>
+            <td class="py-3.5 px-4 text-slate-500 text-[11px] leading-relaxed">
+              <span class="font-bold text-slate-700 block mb-0.5">${ind.targetPeriod}</span>
+              ${ind.keyNotes}
+            </td>
+            <td class="py-3.5 px-4 text-center">
+              <select onchange="onDocStatusChange(${ind.id}, this.value)" class="text-xs font-bold px-2.5 py-1.5 rounded-xl border cursor-pointer ${statusColors[currentStatus]} transition">
+                <option value="완료" ${currentStatus === '완료' ? 'selected' : ''}>구비완료</option>
+                <option value="진행중" ${currentStatus === '진행중' ? 'selected' : ''}>준비중</option>
+                <option value="미비" ${currentStatus === '미비' ? 'selected' : ''}>미비</option>
+              </select>
+            </td>
+          </tr>
+        `;
+        tbody.innerHTML += row;
+      });
+    }
+
+    function onDocStatusChange(indId, val) {
+      appState.docStatus[indId] = val;
+      saveState();
+      renderDocsTable();
+    }
+
+    // Export / Import Data
+    function exportData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState, null, 2));
+      const downloadAnchor = document.createElement('a');
+      const filename = `사회복지관_평가체크리스트_${appState.instName || '기관명'}_${new Date().toISOString().slice(0,10)}.json`;
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", filename);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          appState = JSON.parse(e.target.result);
+          saveState();
+          location.reload();
+        } catch(err) {
+          alert("유효한 백업 JSON 파일이 아닙니다.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function exportDocListToCSV() {
+      let csvContent = "\uFEFF지표번호,지표명,필수증빙서류,확인대상기간및주의사항,준비상태\n";
+      INDICATOR_DATA.forEach(ind => {
+        const st = appState.docStatus[ind.id] || "미비";
+        csvContent += `"${ind.id}","${ind.title}","${ind.requiredDocs.replace(/"/g, '""')}","${(ind.targetPeriod + ' | ' + ind.keyNotes).replace(/"/g, '""')}","${st}"\n`;
+      });
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `2027_평가지표_필수서류목록_${appState.instName || '기관'}.csv`;
+      link.click();
+    }
+  </script>
+</body>
+</html>
